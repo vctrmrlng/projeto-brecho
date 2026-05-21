@@ -1,3 +1,10 @@
+AVISO: O projeto ainda está muito feio, mas já está usando JSON para criar a home e a pagina de cada produto.
+PROXIMOS PASSOS: 1 - Fazer a pagina do produto ficar mais bonita e adicionar o carrossel de imagens e videos.
+                 2 - Fazer a home ficar mais bonita
+                 3 - Criar formulario para adicionar produtos
+                 4 - Criar formulario para adicionar clientes
+                 5 - Fazer a pagina da categoria de produto
+
 # Brecho
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.26.
