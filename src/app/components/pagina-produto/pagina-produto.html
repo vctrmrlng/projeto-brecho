@@ -1,1 +1,13 @@
-<p>pagina-produto works!</p>
+<div *ngIf="produto">
+
+  <h1>{{ produto.descricao }}</h1>
+
+  <p>Preço: R$ {{ produto.preco }}</p>
+
+  <p>Gênero: {{ produto.genero }}</p>
+
+  <p>Faixa Etária: {{ produto.faixaEtaria }}</p>
+
+  <p>Status: {{ produto.estado }}</p>
+
+</div>

@@ -4,7 +4,7 @@ export interface Produto {
     descricao: string;
     genero: string;
     faixaEtaria: string;
-    preço: number;
+    preco: number;
     dataDeCadastro: Date;
     estado: string
   }
