@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-pagina-produto',
+  standalone: true,
   imports: [CommonModule],
   templateUrl: './pagina-produto.html',
   styleUrl: './pagina-produto.css',
@@ -13,36 +14,56 @@ import { ActivatedRoute } from '@angular/router';
 export class PaginaProduto implements OnInit {
 
   produto!: Produto;
+  imagens: string[] = [];
+  selectedImageIndex: number = 0;
+  midias: any[] = [];
+  produtosRelacionados: Produto[] = [];
 
   constructor(
     private produtoService: ProdutoService,
     private route: ActivatedRoute
-  ) {}
+  ) { }
 
   ngOnInit(): void {
 
-  this.route.paramMap.subscribe(params => {
+    this.route.paramMap.subscribe(params => {
 
-    const id = Number(params.get('id'));
+      const id = Number(params.get('id'));
 
-    console.log('ID DA ROTA:', id);
 
-    this.produtoService.getProduto().subscribe({
-      next: (dados: Produto[]) => {
+      this.produtoService.getProdutoPorId(id).subscribe({
+        next: (produto) => {
 
-        const produtoEncontrado = dados.find(p => p.id_produto == id);
+          this.produto = produto;
 
-        console.log('PRODUTO ENCONTRADO:', produtoEncontrado);
+          // 🔥 AQUI começa o segundo endpoint
+          this.produtoService.getMidiasPorProduto(id).subscribe({
+            next: (midias) => {
 
-        if (produtoEncontrado) {
-          this.produto = produtoEncontrado;
+              // 🔥 AQUI você monta o carrossel FINAL
+              this.imagens = [
+                produto.imagemPrincipal,          // ✔ SLIDE 0 (produto)
+                ...midias.map(m => m.midia_url)   // ✔ SLIDE 1+
+              ];
+
+              // 🔥 garante que começa na primeira imagem
+              this.selectedImageIndex = 0;
+
+            }
+          });
+
         }
+      });
 
-      }
+
+      this.produtoService.getMidiasPorProduto(id).subscribe({
+        next: (midias) => {
+          this.midias = midias;
+        },
+        error: (err) => console.error(err)
+      });
+
     });
 
-  });
-
-}
-
+  }
 }
