@@ -9,15 +9,18 @@
 <div class="product-container">
 
   <!-- GALERIA -->
-  <div class="gallery-container">
+  <div class="gallery-container" *ngIf="produto">
 
-    <!-- IMAGEM PRINCIPAL -->
     <div class="main-image-wrapper">
 
+      <button class="nav-arrow arrow-left" (click)="prevImage()">‹</button>
+
       <img
-        [src]="imagens?.[selectedImageIndex] || produto?.imagemPrincipal"
+        [src]="imagens.length ? imagens[selectedImageIndex] : produto.imagem"
         alt="Produto"
       />
+
+      <button class="nav-arrow arrow-right" (click)="nextImage()">›</button>
 
       <span class="image-counter">
         {{ selectedImageIndex + 1 }} / {{ imagens.length || 1 }}
@@ -26,48 +29,37 @@
     </div>
 
     <!-- THUMBNAILS -->
-    <div class="thumbnails">
+    <div class="thumbnails" *ngIf="imagens.length">
+
       <div
         class="thumb"
         *ngFor="let img of imagens; let i = index"
+        [class.active]="i === selectedImageIndex"
         (click)="selectedImageIndex = i"
       >
         <img [src]="img" />
       </div>
+
     </div>
 
   </div>
 
   <!-- DETALHES -->
-  <div class="details-container">
+  <div class="details-container" *ngIf="produto">
 
-    <div class="brand-meta">
-      Produto #{{ produto?.id_produto }}
-    </div>
-
+    <!-- TÍTULO -->
     <h1>
-      <span>{{ produto?.genero }}</span>
-      {{ produto?.descricao }}
+      {{ produto.descricao }}
     </h1>
 
+    <!-- PREÇO -->
     <div class="rating-price-row">
-
-      <div class="rating">
-        <span class="stars">
-          ★★★★☆
-        </span>
-        <span class="rating-text">
-          {{ produto?.estado }}
-        </span>
-      </div>
-
       <div class="price">
-        R$ {{ produto?.preco }}
+        {{ produto.preco | currency:'BRL':'symbol':'1.2-2' }}
       </div>
-
     </div>
 
-    <!-- OPÇÕES -->
+    <!-- TAMANHO -->
     <div class="option-section">
 
       <div class="option-header">
@@ -76,92 +68,72 @@
 
       <div class="sizes-row">
         <button class="size-btn">
-          {{ produto?.tamanho }}
+          {{ produto.tamanho }}
         </button>
       </div>
 
     </div>
 
+    <!-- GÊNERO -->
+    <div class="option-section">
+
+      <div class="option-header">
+        <span>Gênero</span>
+      </div>
+
+      <div class="option-value">
+        {{ produto.genero }}
+      </div>
+
+    </div>
+
+    <!-- FAIXA ETÁRIA -->
     <div class="option-section">
 
       <div class="option-header">
         <span>Faixa Etária</span>
       </div>
 
-      <div>
-        {{ produto?.faixaEtaria }}
+      <div class="option-value">
+        {{ getFaixaEtariaLabel(produto.faixaEtaria) }}
       </div>
 
     </div>
 
-    <!-- AÇÕES -->
+    <!-- AÇÕES (APENAS UMA VEZ) -->
     <div class="actions-row">
-      <button class="add-to-bag">Adicionar</button>
+      <button class="add-to-bag">Reservar</button>
       <button class="wishlist-btn">♡</button>
     </div>
 
-    <!-- PERKS (mantido fixo) -->
-    <div class="perks-row">
-      <div class="perk-item">
-        <h4>Entrega</h4>
-        <p>Brasil</p>
-      </div>
-      <div class="perk-item">
-        <h4>Retorno</h4>
-        <p>30 dias</p>
-      </div>
-      <div class="perk-item">
-        <h4>Verificado</h4>
-        <p>brechó</p>
-      </div>
-    </div>
-
-    <!-- ACCORDION -->
-    <div class="accordion-item">
-
-      <div class="accordion-trigger">
-        <span>Descrição</span>
-      </div>
-
-      <div class="accordion-content">
-        {{ produto?.descricao }}
-      </div>
-
-    </div>
-
-    <div class="accordion-item">
-      <div class="accordion-trigger">
-        <span>Detalhes</span>
-      </div>
-
-      <div class="accordion-content">
-        Estado: {{ produto?.estado }} <br />
-        Tamanho: {{ produto?.tamanho }} <br />
-        Gênero: {{ produto?.genero }}
-      </div>
-    </div>
-
   </div>
+
 </div>
 
-<!-- RELACIONADOS (placeholder por enquanto) -->
-<section class="related-section">
+<!-- RELACIONADOS -->
+<section class="related-section" *ngIf="produtosRelacionados.length">
+
   <h2 class="related-title">You may also like</h2>
 
   <div class="related-grid">
+
     <a class="product-card" *ngFor="let item of produtosRelacionados">
 
       <div class="card-image-wrapper">
-        <img [src]="item.imagemPrincipal" />
+        <img [src]="item.imagem" />
       </div>
 
       <div class="card-info">
         <span>{{ item.descricao }}</span>
-        <span class="card-price">R$ {{ item.preco }}</span>
+        <span class="card-price">
+          {{ item.preco | currency:'BRL':'symbol':'1.2-2' }}
+        </span>
       </div>
 
     </a>
+
   </div>
+
 </section>
 
 <!-- FOOTER -->

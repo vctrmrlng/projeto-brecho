@@ -3,10 +3,10 @@ export interface Produto {
     id_cliente: number;
     descricao: string;
     genero: string;
-    faixaEtaria: string;
+    faixaEtaria: number;
     preco: number;
     dataDeCadastro: Date;
     estado: string;
     tamanho: string
-    imagemPrincipal: string
+    imagem: string
   }
