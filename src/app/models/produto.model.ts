@@ -6,7 +6,7 @@ export interface Produto {
   faixaEtaria: number;
   preco: number;
   dataDeCadastro: string;
-  estado: string;
+  status: number;
   tamanho: string;
   imagem: string;
 }

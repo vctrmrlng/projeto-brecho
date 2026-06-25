@@ -6,6 +6,12 @@
     -webkit-font-smoothing: antialiased;
 }
 
+.logo {
+    height: 60px;
+    width: auto;
+    display: block;
+}
+
 /* HEADER */
 
 header {
@@ -204,7 +210,6 @@ header a {
 
 .add-to-bag {
     flex: 1;
-    background: var(--accent-blue);
     color: white;
     border: none;
     padding: 16px;
@@ -214,6 +219,18 @@ header a {
     text-transform: uppercase;
     cursor: pointer;
     transition: 0.2s ease;
+    background: var(--accent-blue);
+}
+
+/* STATUS FORÇADO */
+.add-to-bag.status-reservado {
+    background: #d9d9d9 !important;
+    color: #444 !important;
+}
+
+.add-to-bag.status-vendido {
+    background: #f3b3b3 !important;
+    color: #6b1d1d !important;
 }
 
 .add-to-bag:hover {

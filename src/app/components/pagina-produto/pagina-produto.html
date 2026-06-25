@@ -1,7 +1,11 @@
 <!-- HEADER -->
 <header>
-  <a routerLink="/">← Back</a>
-  <div>BRECHÓ</div>
+  <a routerLink="/">
+    <img src="imagens/logo.svg" alt="Brechó" class="logo">
+  </a>
+
+  <div>BRECHÓ SEGUNDA CHANCE</div>
+
   <a href="#">👜</a>
 </header>
 
@@ -15,10 +19,7 @@
 
       <button class="nav-arrow arrow-left" (click)="prevImage()">‹</button>
 
-      <img
-        [src]="imagens.length ? imagens[selectedImageIndex] : produto.imagem"
-        alt="Produto"
-      />
+      <img [src]="imagens.length ? imagens[selectedImageIndex] : produto.imagem" alt="Produto" />
 
       <button class="nav-arrow arrow-right" (click)="nextImage()">›</button>
 
@@ -28,15 +29,10 @@
 
     </div>
 
-    <!-- THUMBNAILS -->
     <div class="thumbnails" *ngIf="imagens.length">
 
-      <div
-        class="thumb"
-        *ngFor="let img of imagens; let i = index"
-        [class.active]="i === selectedImageIndex"
-        (click)="selectedImageIndex = i"
-      >
+      <div class="thumb" *ngFor="let img of imagens; let i = index" [class.active]="i === selectedImageIndex"
+        (click)="selectedImageIndex = i">
         <img [src]="img" />
       </div>
 
@@ -47,9 +43,7 @@
   <!-- DETALHES -->
   <div class="details-container" *ngIf="produto">
 
-    <h1>
-      {{ produto.descricao }}
-    </h1>
+    <h1>{{ produto.descricao }}</h1>
 
     <div class="rating-price-row">
       <div class="price">
@@ -59,56 +53,52 @@
 
     <!-- TAMANHO -->
     <div class="option-section">
-
-      <div class="option-header">
-        <span>Tamanho</span>
-      </div>
+      <div class="option-header">Tamanho</div>
 
       <div class="sizes-row">
         <button class="size-btn">
           {{ produto.tamanho }}
         </button>
       </div>
-
     </div>
 
     <!-- GÊNERO -->
     <div class="option-section">
-
-      <div class="option-header">
-        <span>Gênero</span>
-      </div>
+      <div class="option-header">Gênero</div>
 
       <div class="option-value">
         {{ produto.genero }}
       </div>
-
     </div>
 
     <!-- FAIXA ETÁRIA -->
     <div class="option-section">
-
-      <div class="option-header">
-        <span>Faixa Etária</span>
-      </div>
+      <div class="option-header">Faixa Etária</div>
 
       <div class="option-value">
         {{ getFaixaEtariaLabel(produto.faixaEtaria) }}
       </div>
-
     </div>
 
     <!-- AÇÕES -->
     <div class="actions-row">
-      <button class="add-to-bag">Reservar</button>
+
+      <button class="add-to-bag" [ngClass]="{
+      'status-reservado': produto.status === 2,
+  'status-vendido': produto.status === 3
+}" (click)="alterarStatus()">
+        {{ getTextoBotao() }}
+      </button>
+
       <button class="wishlist-btn">♡</button>
+
     </div>
 
   </div>
 
 </div>
 
-<!-- 🔥 RELACIONADOS -->
+<!-- RELACIONADOS -->
 <section class="related-section" *ngIf="produtosRelacionados?.length">
 
   <h2 class="related-title">Você também pode gostar</h2>
@@ -137,6 +127,7 @@
 <!-- FOOTER -->
 <footer>
   <div>© 2026 Brechó</div>
+
   <div class="footer-links">
     <a href="#">Privacidade</a>
     <a href="#">Termos</a>

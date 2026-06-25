@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Produto } from '../../models/produto.model';
 import { ProdutoService } from '../../../services/produto.service';
-import { ActivatedRoute } from '@angular/router';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 
 interface Midia {
   id: number;
@@ -40,11 +39,79 @@ export class PaginaProduto implements OnInit {
   constructor(
     private produtoService: ProdutoService,
     private route: ActivatedRoute
-  ) { }
+  ) {}
+
+  // =========================
+  // UTIL
+  // =========================
+
+  getStatus(): string {
+    return String(this.produto?.status ?? '').trim();
+  }
+
+  getTextoBotao(): string {
+    const status = this.getStatus();
+
+    if (status === '2') return 'Reservado';
+    if (status === '3') return 'Vendido';
+
+    return 'Reservar';
+  }
 
   getFaixaEtariaLabel(valor: number): string {
     return this.faixaEtariaMap[valor] ?? 'Não informado';
   }
+
+  // =========================
+  // AÇÃO BOTÃO (TESTE LIMPO)
+  // =========================
+  private montarPayloadAtualizado(novoStatus: number) {
+  return {
+    id: this.produto.id,
+    clienteId: this.produto.clienteId,
+    descricao: this.produto.descricao,
+    preco: this.produto.preco,
+    dataDeCadastro: this.produto.dataDeCadastro,
+    tamanho: this.produto.tamanho,
+    genero: this.produto.genero,
+    faixaEtaria: this.produto.faixaEtaria,
+    status: novoStatus,
+    imagem: this.produto.imagem
+  };
+  }
+  
+  alterarStatus(): void {
+  if (!this.produto) return;
+
+  const atual = Number(this.produto.status);
+
+  // vendido não muda
+  if (atual === 3) return;
+
+  const novoStatus = atual === 1 ? 2 : 1;
+
+  const payload = this.montarPayloadAtualizado(novoStatus);
+
+  // 🔥 atualiza UI IMEDIATAMENTE (sem esperar backend)
+  this.produto.status = novoStatus;
+
+  this.produtoService.atualizarProduto(this.produto.id, payload)
+    .subscribe({
+      next: () => {
+        console.log('✅ STATUS SALVO NO BACKEND');
+      },
+      error: (err) => {
+        console.error('❌ ERRO NO BACKEND:', err);
+
+        // 🔥 rollback se falhar
+        this.produto.status = atual;
+      }
+    });
+}
+
+  // =========================
+  // GALERIA
+  // =========================
 
   prevImage(): void {
     if (!this.imagens.length) return;
@@ -62,24 +129,24 @@ export class PaginaProduto implements OnInit {
       (this.selectedImageIndex + 1) % this.imagens.length;
   }
 
+  // =========================
+  // INIT
+  // =========================
+
   ngOnInit(): void {
 
     this.route.paramMap.subscribe(params => {
 
       const id = Number(params.get('id'));
-      console.log('🔥 ID PRODUTO:', id);
 
       this.produtoService.getProdutoPorId(id).subscribe({
         next: (produto: Produto) => {
 
-          console.log('🔥 PRODUTO:', produto);
           this.produto = produto;
 
-          // 🔥 IMAGENS
+          // IMAGENS
           this.produtoService.getMidiasPorProduto(id).subscribe({
             next: (midias: Midia[]) => {
-
-              console.log('🔥 MÍDIAS:', midias);
 
               this.imagens = [
                 produto.imagem,
@@ -94,29 +161,26 @@ export class PaginaProduto implements OnInit {
             }
           });
 
-          // 🔥 RELACIONADOS (VERSÃO ROBUSTA)
+          // RELACIONADOS
           this.produtoService.getTodosProdutos().subscribe({
             next: (todos: Produto[]) => {
 
-              const relacionados = todos.filter(p =>
-                p.id !== produto.id &&
-                (
-                  p.genero === produto.genero ||
-                  p.faixaEtaria === produto.faixaEtaria
+              this.produtosRelacionados = todos
+                .filter(p =>
+                  p.id !== produto.id &&
+                  (
+                    p.genero === produto.genero ||
+                    p.faixaEtaria === produto.faixaEtaria
+                  )
                 )
-              );
-
-              this.produtosRelacionados = relacionados
                 .sort(() => Math.random() - 0.5)
                 .slice(0, 3);
-
-              console.log('RELACIONADOS FINAL:', this.produtosRelacionados);
-
             },
             error: (err) => {
-              console.error(err);
+              console.error('Erro ao buscar relacionados:', err);
             }
           });
+
         },
         error: (err) => {
           console.error('Erro ao buscar produto:', err);

@@ -26,4 +26,11 @@ export class ProdutoService {
   getTodosProdutos() {
     return this.http.get<Produto[]>(`${this.baseUrl}/produtos`);
   }
+
+  atualizarProduto(id: number, produto: Produto) {
+  return this.http.put(
+    `${this.baseUrl}/produtos/${id}`,
+    produto
+  );
+  }
 }
