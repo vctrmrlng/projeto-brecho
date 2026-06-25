@@ -131,15 +131,16 @@ header a {
 }
 
 /* TÍTULO */
-.details-container h1 {
-    font-size: 30px;
-    font-weight: 500;
-    line-height: 1.2;
-    letter-spacing: -0.3px;
-    color: var(--text-dark);
-    margin-bottom: 4px;
-}
 
+.details-container {
+    flex: 1;
+    min-width: 0;
+
+    background: #f8f9fc;
+    padding: 32px;
+    border: 1px solid #e4e7ee;
+    border-radius: 12px;
+}
 /* PREÇO */
 .price {
     font-size: 28px;

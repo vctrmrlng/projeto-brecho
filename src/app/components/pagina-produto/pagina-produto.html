@@ -47,12 +47,10 @@
   <!-- DETALHES -->
   <div class="details-container" *ngIf="produto">
 
-    <!-- TÍTULO -->
     <h1>
       {{ produto.descricao }}
     </h1>
 
-    <!-- PREÇO -->
     <div class="rating-price-row">
       <div class="price">
         {{ produto.preco | currency:'BRL':'symbol':'1.2-2' }}
@@ -100,7 +98,7 @@
 
     </div>
 
-    <!-- AÇÕES (APENAS UMA VEZ) -->
+    <!-- AÇÕES -->
     <div class="actions-row">
       <button class="add-to-bag">Reservar</button>
       <button class="wishlist-btn">♡</button>
@@ -110,14 +108,14 @@
 
 </div>
 
-<!-- RELACIONADOS -->
-<section class="related-section" *ngIf="produtosRelacionados.length">
+<!-- 🔥 RELACIONADOS -->
+<section class="related-section" *ngIf="produtosRelacionados?.length">
 
-  <h2 class="related-title">You may also like</h2>
+  <h2 class="related-title">Você também pode gostar</h2>
 
   <div class="related-grid">
 
-    <a class="product-card" *ngFor="let item of produtosRelacionados">
+    <a class="product-card" *ngFor="let item of produtosRelacionados" [routerLink]="['/produto', item.id]">
 
       <div class="card-image-wrapper">
         <img [src]="item.imagem" />
