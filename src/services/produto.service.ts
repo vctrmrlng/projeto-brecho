@@ -11,10 +11,6 @@ export class ProdutoService {
 
   private baseUrl = 'http://academico3.rj.senac.br/20261prjint3manha-reserva-produtos/api';
 
-  getProduto() {
-    return this.http.get<Produto[]>('mock/produto.json');
-  }
-
   getProdutoPorId(id: number) {
     return this.http.get<Produto>(`${this.baseUrl}/produtos/${id}`);
   }
@@ -28,9 +24,17 @@ export class ProdutoService {
   }
 
   atualizarProduto(id: number, produto: Produto) {
-  return this.http.put(
-    `${this.baseUrl}/produtos/${id}`,
-    produto
-  );
+    return this.http.put(
+      `${this.baseUrl}/produtos/${id}`,
+      produto
+    );
+  }
+
+  // ✅ NOVO: endpoint mais simples (status apenas)
+  atualizarStatusProduto(id: number, status: number) {
+    return this.http.patch(
+      `${this.baseUrl}/produtos/${id}/status`,
+      { status }
+    );
   }
 }

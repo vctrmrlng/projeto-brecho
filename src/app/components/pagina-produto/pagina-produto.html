@@ -19,7 +19,10 @@
 
       <button class="nav-arrow arrow-left" (click)="prevImage()">‹</button>
 
-      <img [src]="imagens.length ? imagens[selectedImageIndex] : produto.imagem" alt="Produto" />
+      <img
+        [src]="imagens.length ? imagens[selectedImageIndex] : produto.imagem"
+        alt="Produto"
+      />
 
       <button class="nav-arrow arrow-right" (click)="nextImage()">›</button>
 
@@ -31,8 +34,12 @@
 
     <div class="thumbnails" *ngIf="imagens.length">
 
-      <div class="thumb" *ngFor="let img of imagens; let i = index" [class.active]="i === selectedImageIndex"
-        (click)="selectedImageIndex = i">
+      <div
+        class="thumb"
+        *ngFor="let img of imagens; let i = index"
+        [class.active]="i === selectedImageIndex"
+        (click)="selectedImageIndex = i"
+      >
         <img [src]="img" />
       </div>
 
@@ -83,10 +90,13 @@
     <!-- AÇÕES -->
     <div class="actions-row">
 
-      <button class="add-to-bag" [ngClass]="{
-      'status-reservado': produto.status === 2,
-  'status-vendido': produto.status === 3
-}" (click)="alterarStatus()">
+      <button
+        class="add-to-bag"
+        [ngClass]="{
+          'status-reservado': produto.status === 0
+        }"
+        (click)="alterarStatus()"
+      >
         {{ getTextoBotao() }}
       </button>
 
@@ -105,8 +115,11 @@
 
   <div class="related-grid">
 
-    <a class="product-card" *ngFor="let item of produtosRelacionados" [routerLink]="['/produto', item.id]">
-
+    <a
+      class="product-card"
+      *ngFor="let item of produtosRelacionados"
+      [routerLink]="['/produto', item.id]"
+    >
       <div class="card-image-wrapper">
         <img [src]="item.imagem" />
       </div>
