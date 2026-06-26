@@ -1,50 +1,128 @@
+/* ==========================================================================
+   1. IMPORTAÇÕES, FONTES E AJUSTES DO TOPOR (IGUAL À HOME)
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap');
+
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 35vh;        /* <--- REDUZIDO: De 40vh para 25vh (ocupa menos altura da tela) */
+    min-height: 180px;   /* <--- REDUZIDO: De 320px para 180px (permite que ele encolha mais) */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 15px 50px;  /* <--- REDUZIDO: Menos espaço interno nas bordas superior e inferior */
+    background: linear-gradient(-45deg, #cbd5e1, #94a3b8, #bccbe0, #a2b4cd);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    overflow: hidden;
+}
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 26px;
+    letter-spacing: 1px;
+}
+
+.hero-content {
+    max-width: 600px;
+    margin: -30px auto auto auto;        
+    text-align: center;
+    margin: 0 auto;       
+    padding: 20px 0;
+}
+
+/* Breadcrumbs no padrão do subtítulo do Hero */
+.breadcrumbs.hero-subtitle {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #555;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    text-align: center;
+    width: 100%;
+}
+
+.breadcrumbs.hero-subtitle a {
+    color: #555;
+    text-decoration: none;
+}
+
+.hero-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 56px;
+    font-weight: 400;
+    line-height: 1.1;
+    color: #111;
+    font-style: italic;
+    text-transform: capitalize;
+    display: inline-block; /* Faz a caixa do título ter apenas o tamanho do texto */
+    margin: 0 auto;        /* Centraliza a caixa do título */
+}
+
+.availability-badge {
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(450px); /* Empurra ele para a direita a partir do centro */
+    font-size: 10px;
+    letter-spacing: 2px;
+    border: 1px solid rgba(0,0,0,0.2);
+    padding: 6px 12px;
+    white-space: nowrap; /* Garante que o texto fique em uma linha só */
+}
+
+/* TICKER (TEXTO EM MOVIMENTO) */
+.ticker-wrapper {
+    background-color: #e3ebf6;
+    overflow: hidden;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    width: 100%;
+}
+
+.ticker {
+    display: flex;
+    white-space: nowrap;
+    animation: tickerLoop 25s linear infinite;
+}
+
+.ticker span {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: #5d6778;
+    text-transform: uppercase;
+}
+
+@keyframes tickerLoop {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-33.33%, 0, 0); }
+}
+
+
+/* ==========================================================================
+   2. CONFIGURAÇÕES DO CORPO DA PÁGINA E FILTROS
+   ========================================================================== */
 body {
   font-family: 'Playfair Display', Georgia, serif;
   background-color: #f4f6f9;
   color: #2c3e50;
   margin: 0;
+  overflow-x: hidden;
 }
 
-/* HEADER */
-.category-header {
-  background-color: #b0c4de;
-  padding: 60px 20px;
-  text-align: center;
-}
-
-.breadcrumbs {
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 15px;
-  color: #555;
-}
-
-.breadcrumbs a {
-  color: #2c3e50;
-  text-decoration: none;
-}
-
-.category-title {
-  font-size: 3rem;
-  font-weight: 400;
-  margin: 0 0 10px;
-}
-
-.category-subtitle {
-  font-size: 1.1rem;
-  font-style: italic;
-}
-
-/* DIVISOR */
-.section-divider {
-  border: 0;
-  height: 1px;
-  background: #e0e0e0;
-  margin: 0;
-}
-
-/* FILTROS */
 .filters {
   max-width: 1200px;
   margin: 30px auto;
@@ -69,7 +147,10 @@ body {
   border-radius: 4px;
 }
 
-/* STATES */
+
+/* ==========================================================================
+   3. ESTADOS DA TELA (LOADING / VAZIO)
+   ========================================================================== */
 .loading-state,
 .empty-state {
   text-align: center;
@@ -78,21 +159,22 @@ body {
   color: #666;
 }
 
-/* CONTAINER */
+
+/* ==========================================================================
+   4. GRID DE PRODUTOS E CARDS
+   ========================================================================== */
 .products-container {
   max-width: 1200px;
   margin: 40px auto;
   padding: 0 20px;
 }
 
-/* GRID */
 .products-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 40px 30px;
 }
 
-/* CARD */
 .product-card {
   text-decoration: none;
   color: inherit;
@@ -109,7 +191,6 @@ body {
   transform: scale(1.03);
 }
 
-/* IMAGE */
 .product-image-wrapper {
   background: white;
   aspect-ratio: 3 / 4;
@@ -126,7 +207,6 @@ body {
   transition: transform 0.3s ease;
 }
 
-/* INFO */
 .product-info {
   padding-top: 15px;
 }

@@ -29,9 +29,8 @@ body {
     min-height: 320px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Mantém a navbar no topo e o badge/conteúdo distribuídos */
+    justify-content: space-between;
     padding: 20px 50px;
-
     background: linear-gradient(-45deg, #cbd5e1, #94a3b8, #bccbe0, #a2b4cd);
     background-size: 400% 400%;
     animation: gradientShift 15s ease infinite;
@@ -65,8 +64,8 @@ body {
 /* CONTEÚDO CENTRAL DO HERO */
 .hero-content {
     max-width: 600px;
-    margin: auto auto;        /* O truque mágico: margem automática joga o bloco exatamente no centro */
-    text-align: center;       /* Centraliza o texto e o botão horizontalmente */
+    margin: auto auto;        
+    text-align: center;       
     padding: 20px 0;
 }
 
@@ -82,31 +81,8 @@ body {
     font-size: 56px;
     font-weight: 400;
     line-height: 1.1;
-    margin-bottom: 30px;
     color: #111;
-}
-
-.hero-title em, .hero-title {
-    /* Simulando o itálico elegante da imagem */
     font-style: italic;
-}
-
-.btn-hero {
-    display: inline-block;
-    background-color: #ffffff;
-    color: #111;
-    text-decoration: none;
-    padding: 14px 28px;
-    font-size: 11px;
-    letter-spacing: 2px;
-    font-weight: 500;
-    border-radius: 2px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    transition: transform 0.2s;
-}
-
-.btn-hero:hover {
-    transform: translateY(-2px);
 }
 
 .availability-badge {
@@ -163,6 +139,22 @@ body {
     font-family: 'Playfair Display', serif;
     font-size: 28px;
     font-weight: 400;
+}
+
+/* Limpa os estilos padrão do link e força a herdar tudo do h2 */
+.section-title-link {
+    color: inherit;
+    text-decoration: none;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    display: inline-block;
+}
+
+/* Opcional: Um efeito sutil ao passar o mouse para o usuário saber que é clicável */
+.section-title-link:hover {
+    opacity: 0.75;
+    transition: opacity 0.2s ease;
 }
 
 .view-all {
@@ -222,19 +214,19 @@ body {
 /* TEXTOS DOS PRODUTOS (CARD) */
 .product-card h3 {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 15px;         /* Aumentado para melhor legibilidade */
-    font-weight: 500;         /* Um pouco mais encorpado, sem ser negrito pesado */
-    color: #111111;           /* Preto mais profundo e sofisticado */
-    line-height: 1.4;         /* Espaçamento vertical elegante entre linhas */
-    margin-bottom: 6px;       /* Afasta sutilmente o preço */
-    letter-spacing: -0.2px;   /* Ajuste fino de espaçamento entre letras (ar premium) */
+    font-size: 15px;         
+    font-weight: 500;         
+    color: #111111;           
+    line-height: 1.4;         
+    margin-bottom: 6px;       
+    letter-spacing: -0.2px;   
 }
 
 .price {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 14px;         /* Preço ligeiramente menor que o título, mas visível */
+    font-size: 14px;         
     font-weight: 400;
-    color: #5d6778;           /* Um tom de cinza azulado mais sóbrio e profissional */
+    color: #5d6778;           
 }
 
 /* SEÇÃO MANIFESTO */
@@ -398,7 +390,7 @@ body {
 .footer-column span {
     display: block;
     font-size: 13px;
-    color: #55637a;    /* Um tom cinza sutil para indicar que é apenas informativo */
+    color: #55637a;    
     margin-bottom: 12px;
 }
 

@@ -1,41 +1,41 @@
-<header class="category-header">
-  <div class="breadcrumbs">
-    <a routerLink="/">Início</a> /
-    <span class="current-category">{{ genero }}</span>
+<header class="hero-section">
+
+  <nav class="navbar">
+    <a routerLink="/" class="logo">
+      <img src="/imagens/logo.svg" alt="Maison" class="logo" />
+    </a>
+  </nav>
+
+  <div class="hero-content">
+    <div class="breadcrumbs hero-subtitle">
+      <a routerLink="/">Início</a> /
+      <span class="current-category">{{ genero }}</span>
+    </div>
+
+    <h1 class="hero-title">
+      {{ genero }}
+    </h1>
   </div>
 
-  <h1 class="category-title">{{ genero }}</h1>
+  <div class="availability-badge">
+    PEÇAS EXCLUSIVAS
+  </div>
 
-  <p class="category-subtitle">
-    Encontre peças únicas com história.
-  </p>
 </header>
 
-<hr class="section-divider">
-
-<!-- FILTROS -->
-<section class="filters">
-
-  <div class="filter-group">
-    <label>Preço máximo:</label>
-    <input
-      type="number"
-      [(ngModel)]="precoMaximo"
-      (input)="carregarProdutos()"
-      placeholder="Ex: 100"
-    >
+<div class="ticker-wrapper">
+  <div class="ticker">
+    <span>
+      PEÇAS ÚNICAS ✦ MODA SUSTENTÁVEL ✦ SEGUNDA CHANCE ✦ FRETE GRÁTIS ACIMA DE R$ 250 ✦ RENOVE SEU LOOK COM PEÇAS SEMI NOVAS ✦ &nbsp;
+    </span>
+    <span>
+      PEÇAS ÚNICAS ✦ MODA SUSTENTÁVEL ✦ SEGUNDA CHANCE ✦ FRETE GRÁTIS ACIMA DE R$ 250 ✦ RENOVE SEU LOOK COM PEÇAS SEMI NOVAS ✦ &nbsp;
+    </span>
+    <span>
+      PEÇAS ÚNICAS ✦ MODA SUSTENTÁVEL ✦ SEGUNDA CHANCE ✦ FRETE GRÁTIS ACIMA DE R$ 250 ✦ RENOVE SEU LOOK COM PEÇAS SEMI NOVAS ✦ &nbsp;
+    </span>
   </div>
-
-  <div class="filter-group">
-    <label>Ordenar:</label>
-    <select [(ngModel)]="ordenacao" (change)="carregarProdutos()">
-      <option value="padrao">Padrão</option>
-      <option value="menor">Menor preço</option>
-      <option value="maior">Maior preço</option>
-    </select>
-  </div>
-
-</section>
+</div>
 
 <!-- LOADING -->
 <div *ngIf="loading" class="loading-state">
