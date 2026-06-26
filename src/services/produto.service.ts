@@ -32,9 +32,31 @@ export class ProdutoService {
 
   // ✅ NOVO: endpoint mais simples (status apenas)
   atualizarStatusProduto(id: number, status: number) {
+
+  if (status === 1) {
     return this.http.patch(
-      `${this.baseUrl}/produtos/${id}/status`,
-      { status }
+      `${this.baseUrl}/produtos/${id}/ativar`,
+      {}
     );
   }
+
+  return this.http.patch(
+    `${this.baseUrl}/produtos/${id}/inativar`,
+    {}
+  );
+}
+
+  ativarProduto(id: number) {
+  return this.http.patch(
+    `${this.baseUrl}/produtos/${id}/ativar`,
+    {}
+  );
+  }
+
+inativarProduto(id: number) {
+  return this.http.patch(
+    `${this.baseUrl}/produtos/${id}/inativar`,
+    {}
+  );
+}
 }

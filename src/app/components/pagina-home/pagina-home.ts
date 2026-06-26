@@ -12,23 +12,40 @@ import { ProdutoService } from '../../../services/produto.service';
 })
 export class PaginaHome implements OnInit {
 
-  produtos: Produto[]=[];
+  produtos: Produto[] = [];
+  produtosFemininos: Produto[] = [];
+  produtosMasculinos: Produto[] = [];
+  produtosInfantis: Produto[] = [];
 
   private service = inject(ProdutoService);
 
   ngOnInit(): void {
 
-  console.log('HOME INICIALIZOU');
+    console.log('HOME INICIALIZOU');
 
-  this.service.getProduto().subscribe({
-    next: (dados) => {
+    this.service.getTodosProdutos().subscribe({
+      next: (dados: Produto[]) => {
 
-      console.log('HOME DADOS:', dados);
+        const dadosEmbaralhados = [...dados].sort(() => Math.random() - 0.5);
 
-      this.produtos = dados;
+        this.produtosFemininos = dadosEmbaralhados
+          .filter(p => p.genero.toLowerCase() === 'feminino' && (p.faixaEtaria === 5 || p.faixaEtaria === 6))
+          .slice(0, 4);
 
-    }
-  });
+        this.produtosMasculinos = dadosEmbaralhados
+          .filter(p => p.genero.toLowerCase() === 'masculino' && (p.faixaEtaria === 5 || p.faixaEtaria === 6))
+          .slice(0, 4);
 
-}
+        this.produtosInfantis = dadosEmbaralhados
+          .filter(p => p.faixaEtaria >= 1 && p.faixaEtaria <= 4)
+          .slice(0, 4);
+
+        console.log('Feminino:', this.produtosFemininos);
+        console.log('Masculino:', this.produtosMasculinos);
+        console.log('Infantil:', this.produtosInfantis);
+
+      }
+    });
+
+  }
 }
