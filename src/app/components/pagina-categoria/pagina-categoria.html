@@ -1,0 +1,82 @@
+<header class="category-header">
+  <div class="breadcrumbs">
+    <a routerLink="/">Início</a> /
+    <span class="current-category">{{ genero }}</span>
+  </div>
+
+  <h1 class="category-title">{{ genero }}</h1>
+
+  <p class="category-subtitle">
+    Encontre peças únicas com história.
+  </p>
+</header>
+
+<hr class="section-divider">
+
+<!-- FILTROS -->
+<section class="filters">
+
+  <div class="filter-group">
+    <label>Preço máximo:</label>
+    <input
+      type="number"
+      [(ngModel)]="precoMaximo"
+      (input)="carregarProdutos()"
+      placeholder="Ex: 100"
+    >
+  </div>
+
+  <div class="filter-group">
+    <label>Ordenar:</label>
+    <select [(ngModel)]="ordenacao" (change)="carregarProdutos()">
+      <option value="padrao">Padrão</option>
+      <option value="menor">Menor preço</option>
+      <option value="maior">Maior preço</option>
+    </select>
+  </div>
+
+</section>
+
+<!-- LOADING -->
+<div *ngIf="loading" class="loading-state">
+  Carregando produtos...
+</div>
+
+<!-- EMPTY STATE -->
+<div *ngIf="!loading && produtosFiltrados.length === 0" class="empty-state">
+  <h2>Nenhum produto encontrado</h2>
+  <p>Tente ajustar os filtros.</p>
+</div>
+
+<!-- GRID -->
+<main class="products-container" *ngIf="!loading && produtosFiltrados.length > 0">
+  <div class="products-grid">
+
+    <a
+      *ngFor="let produto of produtosFiltrados"
+      [routerLink]="['/produto', produto.id]"
+      class="product-card"
+    >
+
+      <div class="product-image-wrapper">
+        <img
+          [src]="produto.imagem"
+          [alt]="produto.descricao"
+          class="product-image"
+        >
+      </div>
+
+      <div class="product-info">
+        <h3 class="product-name">
+          {{ produto.descricao }}
+        </h3>
+
+        <p class="product-price">
+          R$ {{ produto.preco | number:'1.2-2' }}
+        </p>
+      </div>
+
+    </a>
+
+  </div>
+</main>

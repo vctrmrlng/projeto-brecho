@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { PaginaHome } from './components/pagina-home/pagina-home';
 import { PaginaProduto } from './components/pagina-produto/pagina-produto';
 import { CadastroUsuario } from './components/cadastro-usuario/cadastro-usuario';
+import { PaginaCategoria } from './components/pagina-categoria/pagina-categoria';
 
 export const routes: Routes = [
   {
@@ -17,9 +18,8 @@ export const routes: Routes = [
   component: CadastroUsuario
   },
   {
-  path: 'teste-status',
-  loadComponent: () =>
-    import('./components/teste-status/teste-status')
-      .then(m => m.TesteStatusComponent)
+  path: 'categoria/:genero',
+  component: PaginaCategoria
   }
+
 ];
