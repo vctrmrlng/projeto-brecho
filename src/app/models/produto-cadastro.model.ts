@@ -1,6 +1,5 @@
 export interface ProdutoCadastro {
-
-  clienteId: number;
+  clienteId?: number;
   descricao: string;
   preco: number;
   dataDeCadastro: string;

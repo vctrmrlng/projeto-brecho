@@ -3,7 +3,6 @@ import { FormsModule } from '@angular/forms';
 import { ProdutoCadastroService } from '../../../services/produto-cadastro.service';
 import { ProdutoCadastro } from '../../models/produto-cadastro.model';
 
-
 @Component({
   selector: 'app-cadastro-produto',
   standalone: true,
@@ -13,51 +12,37 @@ import { ProdutoCadastro } from '../../models/produto-cadastro.model';
 })
 export class CadastroProduto {
 
-produto: ProdutoCadastro = {
-  clienteId: 0,
-  descricao: '',
-  preco: 0,
-  dataDeCadastro: '',
-  tamanho: '',
-  genero: 'masculino',
-  faixaEtaria: 0,
-  status: 1,
-  imagem: ''
-};
+  produto: ProdutoCadastro = {
+    descricao: '',
+    preco: 0,
+    dataDeCadastro: '',
+    tamanho: '',
+    genero: '',
+    faixaEtaria: 0,
+    status: 1,
+    imagem: ''
+  };
 
   constructor(private produtoCadastroService: ProdutoCadastroService) {}
 
   cadastrar() {
 
-    if (this.produto.clienteId <= 0) {
-      alert('Informe o ID do cliente.');
+    // Define automaticamente os campos ocultos
+    this.produto.status = 1;
+    this.produto.dataDeCadastro = new Date().toISOString().split('T')[0];
+
+    if (this.produto.descricao.trim().length < 5) {
+      alert('Descrição muito curta.');
       return;
     }
 
-    if (this.produto.descricao.trim().length < 5) {
-
-    alert('Descrição muito curta.');
-
-    return;
-
-
-    }
-
     if (this.produto.preco < 1) {
-
-    alert('Preço mínimo é R$ 1,00.');
-
-    return;
-
-    }
-
-    if (!this.produto.dataDeCadastro) {
-      alert('Informe a data de cadastro.');
+      alert('Preço mínimo é R$ 1,00.');
       return;
     }
 
     if (!this.produto.tamanho) {
-      alert('Selecione o tamanho.');
+      alert('Informe o tamanho.');
       return;
     }
 
@@ -66,12 +51,10 @@ produto: ProdutoCadastro = {
       return;
     }
 
-    if (this.produto.faixaEtaria < 0) {
-      alert('Informe a faixa etária.');
+    if (this.produto.faixaEtaria === 0) {
+      alert('Selecione a faixa etária.');
       return;
     }
-
-
 
     console.log('Enviando produto:', this.produto);
 
@@ -85,12 +68,11 @@ produto: ProdutoCadastro = {
           alert('Produto cadastrado com sucesso!');
 
           this.produto = {
-            clienteId: 0,
             descricao: '',
             preco: 0,
             dataDeCadastro: '',
             tamanho: '',
-            genero: 'masculino',
+            genero: '',
             faixaEtaria: 0,
             status: 1,
             imagem: ''
@@ -100,7 +82,7 @@ produto: ProdutoCadastro = {
 
         error: (erro: any) => {
 
-          console.error('Erro:', erro);
+          console.error('Erro ao cadastrar produto:', erro);
 
           alert('Erro ao cadastrar produto.');
 
