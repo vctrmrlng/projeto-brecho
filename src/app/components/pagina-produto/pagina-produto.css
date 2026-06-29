@@ -309,3 +309,74 @@ footer {
     text-decoration: none;
     margin-left: 20px;
 }
+/* =========================
+   PRODUTO NÃO ENCONTRADO
+========================= */
+
+.not-found-container {
+    max-width: 700px;
+    margin: 60px auto;
+    padding: 60px 40px;
+    text-align: center;
+    background: #f8f9fc;
+    border: 1px solid #e4e7ee;
+    border-radius: 12px;
+}
+
+.not-found-icon {
+    font-size: 64px;
+    margin-bottom: 24px;
+}
+
+.not-found-container h1 {
+    font-size: 32px;
+    margin-bottom: 16px;
+    color: var(--text-dark);
+}
+
+.not-found-container p {
+    max-width: 520px;
+    margin: 0 auto 36px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    font-size: 16px;
+}
+
+.not-found-actions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.primary-button,
+.secondary-button {
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: .2s ease;
+}
+
+.primary-button {
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+}
+
+.primary-button:hover {
+    opacity: .9;
+    transform: translateY(-1px);
+}
+
+.secondary-button {
+    background: white;
+    color: var(--text-dark);
+    border: 1px solid var(--border-color);
+}
+
+.secondary-button:hover {
+    background: #f2f2f2;
+}

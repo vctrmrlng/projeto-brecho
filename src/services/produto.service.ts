@@ -1,6 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Produto } from '../app/models/produto.model';
+import { environment } from '../environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class ProdutoService {
 
   private http = inject(HttpClient);
 
-  private baseUrl = 'http://academico3.rj.senac.br/20261prjint3manha-reserva-produtos/api';
+  private baseUrl = environment.apiUrl ;
 
   getProdutoPorId(id: number) {
     return this.http.get<Produto>(`${this.baseUrl}/produtos/${id}`);

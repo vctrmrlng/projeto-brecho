@@ -18,7 +18,7 @@ export class CadastroUsuario {
     email: '',
     chavePix: '',
     senha: '',
-    status: 0
+    status: 1
   };
 
   confirmarSenha = '';
@@ -77,24 +77,35 @@ export class CadastroUsuario {
     console.log('Enviando para API:', this.usuario);
 
     this.clienteService.cadastrar(this.usuario).subscribe({
-      next: (resposta: any) => {
+next: (resposta: any) => {
 
-        console.log('Resposta da API:', resposta);
+  console.log('Resposta da API:', resposta);
 
-        alert('Cadastro realizado com sucesso!');
+  // Salva o usuário no localStorage para o login
+  const usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
 
-        this.usuario = {
-          nome: '',
-          cpf: '',
-          telefone: '',
-          email: '',
-          chavePix: '',
-          senha: '',
-          status: 0
-        };
+  usuarios.push({
+    nome: this.usuario.nome,
+    email: this.usuario.email,
+    senha: this.usuario.senha
+  });
 
-        this.confirmarSenha = '';
-      },
+  localStorage.setItem('usuarios', JSON.stringify(usuarios));
+
+  alert('Cadastro realizado com sucesso!');
+
+  this.usuario = {
+    nome: '',
+    cpf: '',
+    telefone: '',
+    email: '',
+    chavePix: '',
+    senha: '',
+    status: 1
+  };
+
+  this.confirmarSenha = '';
+},
 
       error: (erro: any) => {
 

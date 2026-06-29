@@ -10,10 +10,10 @@
 </header>
 
 <!-- PRODUTO -->
-<div class="product-container">
+<div class="product-container" *ngIf="produto">
 
   <!-- GALERIA -->
-  <div class="gallery-container" *ngIf="produto">
+  <div class="gallery-container">
 
     <div class="main-image-wrapper">
 
@@ -48,7 +48,7 @@
   </div>
 
   <!-- DETALHES -->
-  <div class="details-container" *ngIf="produto">
+  <div class="details-container">
 
     <h1>{{ produto.descricao }}</h1>
 
@@ -108,10 +108,53 @@
 
 </div>
 
+<!-- PRODUTO NÃO ENCONTRADO -->
+<div
+  class="not-found-container"
+  *ngIf="produtoNaoEncontrado"
+>
+
+  <div class="not-found-icon">
+    🔍
+  </div>
+
+  <h1>Produto não encontrado</h1>
+
+  <p>
+    O produto que você procura pode já ter sido vendido,
+    removido do catálogo ou o endereço informado está incorreto.
+  </p>
+
+  <div class="not-found-actions">
+
+    <button
+      class="secondary-button"
+      (click)="voltar()"
+    >
+      ← Voltar
+    </button>
+
+    <a
+      routerLink="/"
+      class="primary-button"
+    >
+      Ver catálogo
+    </a>
+
+  </div>
+
+</div>
+
 <!-- RELACIONADOS -->
 <section class="related-section" *ngIf="produtosRelacionados?.length">
 
-  <h2 class="related-title">Você também pode gostar</h2>
+  <h2 class="related-title">
+    {{
+      produtoNaoEncontrado
+        ? 'Confira outros produtos'
+        : 'Você também pode gostar'
+    }}
+  </h2>
 
   <div class="related-grid">
 

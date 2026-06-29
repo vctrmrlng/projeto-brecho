@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Produto } from '../../models/produto.model';
 import { ProdutoService } from '../../../services/produto.service';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router'; 7
+import { Location } from '@angular/common';
 
 interface Midia {
   id: number;
@@ -21,6 +22,7 @@ interface Midia {
 export class PaginaProduto implements OnInit {
 
   produto!: Produto;
+  produtoNaoEncontrado = false;
 
   imagens: string[] = [];
   selectedImageIndex = 0;
@@ -38,8 +40,9 @@ export class PaginaProduto implements OnInit {
 
   constructor(
     private produtoService: ProdutoService,
-    private route: ActivatedRoute
-  ) {}
+    private route: ActivatedRoute,
+    private location: Location
+  ) { }
 
   // =========================
   // TEXTO BOTÃO
@@ -100,6 +103,10 @@ export class PaginaProduto implements OnInit {
       (this.selectedImageIndex + 1) % this.imagens.length;
   }
 
+  voltar(): void {
+    this.location.back();
+  }
+
   // =========================
   // INIT
   // =========================
@@ -108,6 +115,7 @@ export class PaginaProduto implements OnInit {
     this.route.paramMap.subscribe(params => {
 
       const id = Number(params.get('id'));
+      this.produtoNaoEncontrado = false;
 
       this.produtoService.getProdutoPorId(id).subscribe({
         next: (produto: Produto) => {
@@ -153,7 +161,24 @@ export class PaginaProduto implements OnInit {
 
         },
         error: (err) => {
+
           console.error('Erro ao buscar produto:', err);
+
+          this.produtoNaoEncontrado = true;
+
+          this.produtoService.getTodosProdutos().subscribe({
+            next: (todos: Produto[]) => {
+
+              this.produtosRelacionados = [...todos]
+                .sort(() => Math.random() - 0.5)
+                .slice(0, 3);
+
+            },
+            error: (erro) => {
+              console.error('Erro ao buscar produtos:', erro);
+            }
+          });
+
         }
       });
 
