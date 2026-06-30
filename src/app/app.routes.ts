@@ -3,7 +3,8 @@ import { PaginaHome } from './components/pagina-home/pagina-home';
 import { PaginaProduto } from './components/pagina-produto/pagina-produto';
 import { CadastroUsuario } from './components/cadastro-usuario/cadastro-usuario';
 import { PaginaCategoria } from './components/pagina-categoria/pagina-categoria';
-import { Login } from './login/login';
+import { Login } from './auth/login-usuario/login-usuario';
+import { Institucional } from './institucional/institucional';
 
 export const routes: Routes = [
   {
@@ -31,6 +32,11 @@ export const routes: Routes = [
   {
   path: 'login',
   component: Login
+  },
+  {
+  path: 'institucional',
+  component: Institucional
   }
+
 
 ];

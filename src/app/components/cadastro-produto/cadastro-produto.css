@@ -1,77 +1,120 @@
+/* TOPO DA PÁGINA */
+.cadastro-header {
+    padding: 30px 50px;
+    background-color: #f6f8fc;
+}
+
+/* AJUSTE DO LINK DO LOGO */
+.navbar a.logo {
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.navbar a.logo img {
+    display: block;
+    max-height: 70px;
+    width: auto;
+}
+
+/* CONTAINER DO FORMULÁRIO */
 .cadastro-container {
-    max-width: 700px;
-    margin: 40px auto;
-    padding: 30px;
-    background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-    font-family: Arial, Helvetica, sans-serif;
+    max-width: 500px;
+    margin: 60px auto 100px auto;
+    text-align: center;
+}
+
+.cadastro-subtitle {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #5d6778;
+    margin-bottom: 10px;
 }
 
 .cadastro-container h2 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 30px;
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 400;
+    color: #1a1e24;
+    margin-bottom: 40px;
 }
 
+/* FORMULÁRIO E CAMPOS */
 form {
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 20px;
+    text-align: left;
 }
 
 .campo {
     display: flex;
     flex-direction: column;
+    gap: 8px;
 }
 
 .campo label {
-    margin-bottom: 6px;
-    font-weight: bold;
-    color: #444;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: #475569;
+    text-transform: uppercase;
 }
 
+/* ESTILIZAÇÃO PADRÃO PARA INPUTS E SELECTS */
 .campo input,
 .campo select {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 15px;
-    transition: 0.3s;
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #cbd5e1;
+    background-color: rgba(255, 255, 255, 0.7);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 13px;
+    color: #1a1e24;
+    outline: none;
+    box-sizing: border-box;
+    border-radius: 0; 
+    appearance: none; 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+/* Customização dos placeholders para combinar com o tom do formulário */
+.campo input::placeholder {
+    color: #94a3b8;
+    opacity: 1;
+}
+
+/* ADICIONA UMA SETA MINIMALISTA EXCLUSIVA PARA OS SELECTS */
+.campo select {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path d='M0 0l5 5 5-5z' fill='%23475569'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    cursor: pointer;
+    padding-right: 40px; 
 }
 
 .campo input:focus,
 .campo select:focus {
-    outline: none;
-    border-color: #0d6efd;
-    box-shadow: 0 0 6px rgba(13,110,253,.3);
+    border-color: #94a3b8;
+    background-color: #fff;
 }
 
-button {
-    margin-top: 20px;
-    padding: 12px;
-    border: none;
-    border-radius: 8px;
-    background: #198754;
+/* BOTÃO DE AÇÃO */
+.cadastro-container button {
+    background-color: #121c2d;
     color: white;
-    font-size: 17px;
-    font-weight: bold;
+    border: none;
+    padding: 15px 0;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
     cursor: pointer;
-    transition: .3s;
+    font-weight: 500;
+    margin-top: 15px;
+    text-transform: uppercase;
+    transition: background 0.2s;
 }
 
-button:hover {
-    background: #157347;
-    transform: scale(1.02);
-}
-
-button:active {
-    transform: scale(0.98);
-}
-
-@media (max-width: 768px) {
-    .cadastro-container {
-        margin: 20px;
-        padding: 20px;
-    }
+.cadastro-container button:hover {
+    background-color: #1e2e4a;
 }

@@ -1,0 +1,108 @@
+.institucional-container {
+  display: flex;
+  min-height: 100vh;
+  background: #fafafa;
+  font-family: Arial, sans-serif;
+  color: #222;
+}
+
+/* =========================
+   TOPO (LOGO)
+========================= */
+.topo-institucional {
+  padding: 20px 40px;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+.logo {
+  height: 70px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+/* =========================
+   MENU LATERAL
+========================= */
+.menu-lateral {
+  width: 240px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  padding: 30px 20px;
+  background: #ffffff;
+  border-right: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-lateral h3 {
+  font-size: 18px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.menu-lateral a {
+  text-decoration: none;
+  color: #444;
+  font-size: 15px;
+  padding: 8px 0;
+  transition: 0.2s ease;
+}
+
+.menu-lateral a:hover {
+  color: #000;
+  padding-left: 6px;
+}
+
+/* =========================
+   CONTEÚDO PRINCIPAL
+========================= */
+.conteudo {
+  flex: 1;
+  padding: 40px 60px;
+  max-width: 900px;
+}
+
+/* =========================
+   TIPOGRAFIA
+========================= */
+h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  margin-top: 40px;
+  font-weight: 600;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #444;
+  margin-bottom: 15px;
+}
+
+/* =========================
+   SEÇÕES
+========================= */
+section {
+  margin-bottom: 50px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+/* =========================
+   UX GLOBAL
+========================= */
+html {
+  scroll-behavior: smooth;
+}

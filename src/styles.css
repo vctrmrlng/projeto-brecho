@@ -10,3 +10,7 @@ body {
     background-color: var(--bg-color);
     margin: 0;
 }
+
+html {
+  scroll-behavior: smooth;
+}

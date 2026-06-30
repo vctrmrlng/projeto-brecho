@@ -1,46 +1,114 @@
-.cadastro-container {
-    max-width: 500px;
-    margin: 40px auto;
-    padding: 25px;
-    background-color: #f5f5f5;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+/* TOPO DA PÁGINA */
+.cadastro-header {
+    padding: 30px 50px;
+    background-color: #f6f8fc;
 }
 
-h2 {
+/* AJUSTE DO LINK DO LOGO */
+.navbar a.logo {
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.navbar a.logo img {
+    display: block;
+    max-height: 70px;
+    width: auto;
+}
+
+/* CONTAINER DO FORMULÁRIO */
+.cadastro-container {
+    max-width: 500px;
+    margin: 60px auto 100px auto;
     text-align: center;
-    color: brown;
+}
+
+.cadastro-subtitle {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #5d6778;
+    margin-bottom: 10px;
+}
+
+.cadastro-container h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 400;
+    color: #1a1e24;
+    margin-bottom: 40px;
+}
+
+/* FORMULÁRIO E CAMPOS */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: left;
 }
 
 .campo {
     display: flex;
     flex-direction: column;
-    margin-bottom: 15px;
+    gap: 8px;
 }
 
-label {
-    margin-bottom: 5px;
-    font-weight: bold;
+.campo label {
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: #475569;
+    text-transform: uppercase;
 }
 
-input {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
-}
-
-button {
+/* ESTILIZAÇÃO PADRÃO PARA INPUTS E SELECTS */
+.campo input,
+.campo select {
     width: 100%;
-    padding: 12px;
-    background-color: brown;
+    padding: 15px;
+    border: 1px solid #cbd5e1;
+    background-color: rgba(255, 255, 255, 0.7);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 13px;
+    color: #1a1e24;
+    outline: none;
+    box-sizing: border-box;
+    border-radius: 0; /* Remove qualquer arredondamento do navegador */
+    appearance: none; /* Remove o estilo padrão dos selects do sistema operacional */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+/* ADICIONA UMA SETA MINIMALISTA EXCLUSIVA PARA OS SELECTS */
+.campo select {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path d='M0 0l5 5 5-5z' fill='%23475569'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    cursor: pointer;
+    padding-right: 40px; /* Evita que o texto do select fique em cima da seta */
+}
+
+.campo input:focus,
+.campo select:focus {
+    border-color: #94a3b8;
+    background-color: #fff;
+}
+
+/* BOTÃO DE AÇÃO */
+.cadastro-container button {
+    background-color: #121c2d;
     color: white;
     border: none;
-    border-radius: 5px;
-    font-size: 16px;
+    padding: 15px 0;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
     cursor: pointer;
+    font-weight: 500;
+    margin-top: 15px;
+    text-transform: uppercase;
+    transition: background 0.2s;
 }
 
-button:hover {
-    opacity: 0.9;
+.cadastro-container button:hover {
+    background-color: #1e2e4a;
 }

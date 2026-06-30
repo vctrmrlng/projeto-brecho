@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ProdutoCadastroService } from '../../../services/produto-cadastro.service';
 import { ProdutoCadastro } from '../../models/produto-cadastro.model';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro-produto',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, RouterModule],
   templateUrl: './cadastro-produto.html',
   styleUrl: './cadastro-produto.css'
 })
