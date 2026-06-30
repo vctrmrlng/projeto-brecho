@@ -5,6 +5,8 @@ import { ProdutoService } from '../../../services/produto.service';
 import { ActivatedRoute, RouterModule } from '@angular/router'; 7
 import { Location } from '@angular/common';
 import { Footer } from '../../shared/footer/footer';
+import { AuthService } from '../../../services/auth.service';
+import { ReservaService } from '../../../services/reserva.service';
 
 interface Midia {
   id: number;
@@ -42,7 +44,9 @@ export class PaginaProduto implements OnInit {
   constructor(
     private produtoService: ProdutoService,
     private route: ActivatedRoute,
-    private location: Location
+    private location: Location,
+    private authService: AuthService,
+    private reservaService: ReservaService
   ) { }
 
   // =========================
@@ -58,26 +62,84 @@ export class PaginaProduto implements OnInit {
   // TOGGLE STATUS
   // =========================
   alterarStatus(): void {
-    if (!this.produto) return;
 
-    const atual = Number(this.produto.status);
-    const novoStatus = atual === 1 ? 0 : 1;
-
-    // UI otimista
-    this.produto.status = novoStatus;
-
-    this.produtoService.atualizarStatusProduto(this.produto.id, novoStatus)
-      .subscribe({
-        next: () => {
-          console.log('✅ STATUS ATUALIZADO');
-        },
-        error: (err) => {
-          console.error('❌ ERRO AO ATUALIZAR STATUS:', err);
-          this.produto.status = atual; // rollback
-        }
-      });
+  if (!this.authService.isLoggedIn()) {
+    alert('Você precisa estar logado para realizar esta ação.');
+    return;
   }
 
+  if (!this.produto) return;
+
+  const cliente = JSON.parse(localStorage.getItem('cliente')!);
+  const clienteId = cliente.clienteId;
+
+  const atual = Number(this.produto.status);
+  const novoStatus = atual === 1 ? 0 : 1;
+
+  const reserva = {
+    produtoId: this.produto.id,
+    clienteId: clienteId,
+    data: new Date().toISOString().split('T')[0],
+    preco: this.produto.preco,
+    status: 1
+  };
+
+  if (atual === 1) {
+
+    this.reservaService.criarReserva(reserva).subscribe({
+      next: (res: any) => {
+
+        console.log('Reserva criada:', res);
+
+        this.produto.status = 0;
+
+        this.produtoService.atualizarStatusProduto(this.produto.id, 0)
+          .subscribe();
+
+      },
+      error: (err) => {
+        console.error('Erro ao criar reserva:', err);
+      }
+    });
+
+    return;
+  }
+
+  this.reservaService.getReservas().subscribe({
+    next: (reservas: any[]) => {
+
+      const reservaEncontrada = reservas.find(r =>
+        r.produtoId === this.produto.id &&
+        r.clienteId === clienteId
+      );
+
+      if (!reservaEncontrada) {
+        console.error('Reserva não encontrada');
+        return;
+      }
+
+      this.reservaService.deleteReserva(reservaEncontrada.id).subscribe({
+        next: () => {
+
+          console.log('Reserva removida');
+
+          this.produto.status = 1;
+
+          this.produtoService.atualizarStatusProduto(this.produto.id, 1)
+            .subscribe();
+
+        },
+        error: (err) => {
+          console.error('Erro ao remover reserva:', err);
+        }
+      });
+
+    },
+    error: (err) => {
+      console.error('Erro ao buscar reservas:', err);
+    }
+  });
+}
   // =========================
   // FAIXA ETÁRIA
   // =========================

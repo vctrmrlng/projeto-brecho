@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
+import { LoginResponse } from '../../models/login-response.model';
 
 @Component({
   selector: 'app-login',
@@ -29,22 +30,36 @@ export class Login {
 
     this.authService.login(this.email, this.senha).subscribe({
 
-      next: (resposta: any) => {
+      next: (resposta: LoginResponse) => {
+
+        if (!resposta.autenticado) {
+          alert('E-mail ou senha inválidos.');
+          return;
+        }
 
         console.log('Login realizado:', resposta);
 
-        localStorage.setItem('cliente', JSON.stringify(resposta));
+        this.authService.logout(); // limpa qualquer sessão anterior
+
+        localStorage.setItem('token', resposta.token);
+
+        localStorage.setItem('cliente', JSON.stringify({
+          clienteId: resposta.clienteId,
+          nome: resposta.nome,
+          email: resposta.email
+        }));
 
         alert('Login realizado com sucesso!');
 
-        // Altere para a rota desejada quando criar a tela do cliente
         this.router.navigate(['/']);
 
       },
 
-      error: () => {
+      error: (erro) => {
 
-        alert('E-mail ou senha inválidos.');
+        console.error('Erro no login:', erro);
+
+        alert('Não foi possível realizar o login. Tente novamente.');
 
       }
 
