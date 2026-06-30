@@ -9,48 +9,56 @@
   <!-- MENU LATERAL -->
   <aside class="menu-lateral">
     <h3>Institucional</h3>
-      <a [routerLink]="['/institucional']" fragment="contato">Contato</a>
-      <a [routerLink]="['/institucional']" fragment="trocas">Trocas</a>
-      <a [routerLink]="['/institucional']" fragment="privacidade">Privacidade</a>
-      <a [routerLink]="['/institucional']" fragment="historia">Nossa História</a>
+
+    <a [routerLink]="['/institucional']" fragment="contato">Contato</a>
+    <a [routerLink]="['/institucional']" fragment="trocas">Trocas</a>
+    <a [routerLink]="['/institucional']" fragment="privacidade">Privacidade</a>
+    <a [routerLink]="['/institucional']" fragment="historia">Nossa História</a>
   </aside>
 
   <!-- CONTEÚDO -->
   <main class="conteudo">
 
-    <section id="contato">
+    <section [class.ativo]="secaoAtiva === 'contato'" id="contato">
       <h2>Contato</h2>
-      <p>Esta aplicação ainda se encontra em fase de desenvolvimento acadêmico e não representa uma loja em
+      <p>
+        Esta aplicação ainda se encontra em fase de desenvolvimento acadêmico e não representa uma loja em
         funcionamento.
 
         No momento, não há canais oficiais de atendimento ao cliente.
 
         Para fins de avaliação, este espaço simula um futuro canal de contato, que poderia incluir suporte por e-mail,
-        chat ou redes sociais quando o sistema fosse colocado em produção.</p>
+        chat ou redes sociais quando o sistema fosse colocado em produção.
+      </p>
     </section>
 
-    <section id="trocas">
+    <section [class.ativo]="secaoAtiva === 'trocas'" id="trocas">
       <h2>Trocas</h2>
-      <p>Este projeto não realiza transações reais, portanto não há política de trocas ou devoluções implementada.
+      <p>
+        Este projeto não realiza transações reais, portanto não há política de trocas ou devoluções implementada.
 
         Esta seção existe para demonstrar como seria estruturada uma política de pós-venda em um sistema de e-commerce
         funcional.
 
-        Em um cenário real, aqui seriam descritos prazos, condições de uso e regras para solicitação de trocas.</p>
+        Em um cenário real, aqui seriam descritos prazos, condições de uso e regras para solicitação de trocas.
+      </p>
     </section>
 
-    <section id="privacidade">
+    <section [class.ativo]="secaoAtiva === 'privacidade'" id="privacidade">
       <h2>Privacidade</h2>
-      <p>Como este é um projeto acadêmico sem usuários reais ou coleta de dados sensíveis, nenhuma informação pessoal é
+      <p>
+        Como este é um projeto acadêmico sem usuários reais ou coleta de dados sensíveis, nenhuma informação pessoal é
         armazenada ou processada.
 
         Esta seção simula uma política de privacidade que, em um sistema real, explicaria como dados de clientes seriam
-        coletados, armazenados e protegidos conforme legislações aplicáveis.</p>
+        coletados, armazenados e protegidos conforme legislações aplicáveis.
+      </p>
     </section>
 
-    <section id="historia">
+    <section [class.ativo]="secaoAtiva === 'historia'" id="historia">
       <h2>Nossa História</h2>
-      <p>Este sistema foi desenvolvido como parte de um projeto acadêmico pelos alunos Victor Merling e Caio de Souza
+      <p>
+        Este sistema foi desenvolvido como parte de um projeto acadêmico pelos alunos Victor Merling e Caio de Souza
         Correa, sob orientação dos professores Johnny Edward Villavicencio Tafur e Vitor H. V. Reis, funcionando como o
         projeto final das disciplinas Projeto Integrador III e Programação Front-End III e com o objetivo de aplicar
         conceitos de desenvolvimento web utilizando Angular e integrçao com banco de dados através de API e endpoints.
@@ -58,7 +66,8 @@
         A ideia do projeto é simular uma plataforma de e-commerce funcional, servindo como exercício prático para
         aprendizado de arquitetura de software, componentização e navegação entre páginas.
 
-        Não se trata de uma empresa real, mas de um estudo de caso aplicado.</p>
+        Não se trata de uma empresa real, mas de um estudo de caso aplicado.
+      </p>
     </section>
 
   </main>

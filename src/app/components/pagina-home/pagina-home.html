@@ -45,7 +45,7 @@
 
 <main class="container">
 
-<!-- ========================= -->
+  <!-- ========================= -->
   <!-- FEMININO -->
   <!-- ========================= -->
   <section class="category-section" id="feminino">
@@ -122,7 +122,9 @@
         <h2>
           "Dar uma segunda chance às roupas é também dar uma segunda chance ao planeta."
         </h2>
-        <a href="#" class="btn-manifesto">NOSSA HISTÓRIA</a>
+        <a routerLink="/institucional" fragment="historia" class="btn-manifesto">
+          NOSSA HISTÓRIA
+        </a>
       </div>
     </div>
   </section>
@@ -165,9 +167,9 @@
 
     <div class="footer-column">
       <h4>AJUDA</h4>
-      <span>Contato</span>
-      <span>Trocas</span>
-      <span>Privacidade</span>
+      <a routerLink="/institucional" fragment="contato">Contato</a>
+      <a routerLink="/institucional" fragment="trocas">Trocas</a>
+      <a routerLink="/institucional" fragment="privacidade">Privacidade</a>
     </div>
   </div>
 

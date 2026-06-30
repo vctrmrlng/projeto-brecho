@@ -1,155 +1,134 @@
 /* ==========================================================================
-   1. IMPORTAÇÕES, FONTES E AJUSTES DO TOPOR (IGUAL À HOME)
+   RESET GLOBAL (ANTI OVERFLOW)
    ========================================================================== */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap');
-
-.hero-section {
-    position: relative;
-    width: 100%;
-    height: 35vh;        /* <--- REDUZIDO: De 40vh para 25vh (ocupa menos altura da tela) */
-    min-height: 180px;   /* <--- REDUZIDO: De 320px para 180px (permite que ele encolha mais) */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 15px 50px;  /* <--- REDUZIDO: Menos espaço interno nas bordas superior e inferior */
-    background: linear-gradient(-45deg, #cbd5e1, #94a3b8, #bccbe0, #a2b4cd);
-    background-size: 400% 400%;
-    animation: gradientShift 15s ease infinite;
-    overflow: hidden;
-}
-@keyframes gradientShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+* {
+  box-sizing: border-box;
 }
 
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 26px;
-    letter-spacing: 1px;
-}
-
-.hero-content {
-    max-width: 600px;
-    margin: -30px auto auto auto;        
-    text-align: center;
-    margin: 0 auto;       
-    padding: 20px 0;
-}
-
-/* Breadcrumbs no padrão do subtítulo do Hero */
-.breadcrumbs.hero-subtitle {
-    font-size: 11px;
-    letter-spacing: 3px;
-    color: #555;
-    margin-bottom: 15px;
-    text-transform: uppercase;
-    text-align: center;
-    width: 100%;
-}
-
-.breadcrumbs.hero-subtitle a {
-    color: #555;
-    text-decoration: none;
-}
-
-.hero-title {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 56px;
-    font-weight: 400;
-    line-height: 1.1;
-    color: #111;
-    font-style: italic;
-    text-transform: capitalize;
-    display: inline-block; /* Faz a caixa do título ter apenas o tamanho do texto */
-    margin: 0 auto;        /* Centraliza a caixa do título */
-}
-
-.availability-badge {
-    position: absolute;
-    top: 40px;
-    left: 50%;
-    transform: translateX(450px); /* Empurra ele para a direita a partir do centro */
-    font-size: 10px;
-    letter-spacing: 2px;
-    border: 1px solid rgba(0,0,0,0.2);
-    padding: 6px 12px;
-    white-space: nowrap; /* Garante que o texto fique em uma linha só */
-}
-
-/* TICKER (TEXTO EM MOVIMENTO) */
-.ticker-wrapper {
-    background-color: #e3ebf6;
-    overflow: hidden;
-    padding: 12px 0;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    width: 100%;
-}
-
-.ticker {
-    display: flex;
-    white-space: nowrap;
-    animation: tickerLoop 25s linear infinite;
-}
-
-.ticker span {
-    font-size: 10px;
-    letter-spacing: 3px;
-    color: #5d6778;
-    text-transform: uppercase;
-}
-
-@keyframes tickerLoop {
-    0% { transform: translate3d(0, 0, 0); }
-    100% { transform: translate3d(-33.33%, 0, 0); }
-}
-
-
-/* ==========================================================================
-   2. CONFIGURAÇÕES DO CORPO DA PÁGINA E FILTROS
-   ========================================================================== */
-body {
+html, body {
+  margin: 0;
+  overflow-x: clip; /* mais moderno e seguro que hidden */
   font-family: 'Playfair Display', Georgia, serif;
   background-color: #f4f6f9;
   color: #2c3e50;
-  margin: 0;
-  overflow-x: hidden;
-}
-
-.filters {
-  max-width: 1200px;
-  margin: 30px auto;
-  padding: 0 20px;
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.filter-group {
-  display: flex;
-  flex-direction: column;
-  font-family: Arial, sans-serif;
-  font-size: 0.9rem;
-}
-
-.filter-group input,
-.filter-group select {
-  padding: 8px;
-  margin-top: 5px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
 }
 
 
 /* ==========================================================================
-   3. ESTADOS DA TELA (LOADING / VAZIO)
+   HERO
+   ========================================================================== */
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 35vh;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 15px 50px;
+  background: linear-gradient(-45deg, #cbd5e1, #94a3b8, #bccbe0, #a2b4cd);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  overflow: hidden;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 26px;
+  letter-spacing: 1px;
+}
+
+.hero-content {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.breadcrumbs.hero-subtitle {
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: #555;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  text-align: center;
+  width: 100%;
+}
+
+.breadcrumbs.hero-subtitle a {
+  color: #555;
+  text-decoration: none;
+}
+
+.hero-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 56px;
+  font-weight: 400;
+  line-height: 1.1;
+  color: #111;
+  font-style: italic;
+  text-transform: capitalize;
+  display: inline-block;
+  margin: 0 auto;
+}
+
+.availability-badge {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(450px);
+  font-size: 10px;
+  letter-spacing: 2px;
+  border: 1px solid rgba(0,0,0,0.2);
+  padding: 6px 12px;
+  white-space: nowrap;
+}
+
+
+/* ==========================================================================
+   TICKER
+   ========================================================================== */
+.ticker-wrapper {
+  background-color: #e3ebf6;
+  overflow: hidden;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  width: 100%;
+}
+
+.ticker {
+  display: flex;
+  white-space: nowrap;
+  animation: tickerLoop 25s linear infinite;
+}
+
+.ticker span {
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: #5d6778;
+  text-transform: uppercase;
+}
+
+@keyframes tickerLoop {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-33.33%, 0, 0); }
+}
+
+
+/* ==========================================================================
+   ESTADOS
    ========================================================================== */
 .loading-state,
 .empty-state {
@@ -161,7 +140,7 @@ body {
 
 
 /* ==========================================================================
-   4. GRID DE PRODUTOS E CARDS
+   GRID DE PRODUTOS
    ========================================================================== */
 .products-container {
   max-width: 1200px;
@@ -223,4 +202,75 @@ body {
   font-family: Arial, sans-serif;
   font-weight: bold;
   font-size: 1rem;
+}
+
+
+/* ==========================================================================
+   FOOTER (BLINDADO CONTRA OVERFLOW)
+   ========================================================================== */
+.site-footer {
+  width: 100%;
+  max-width: 100%;
+  margin: 80px auto 0;
+  padding: 40px 20px 24px;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  color: #5d6778;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  overflow-x: clip;
+}
+
+.footer-links-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 40px;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.footer-brand,
+.footer-column {
+  min-width: 0; /* essencial para grid não vazar */
+}
+
+.footer-brand h3 {
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: #111;
+  letter-spacing: 1px;
+}
+
+.footer-brand p {
+  font-size: 12px;
+  line-height: 1.6;
+  color: #5d6778;
+  word-break: break-word;
+}
+
+.footer-column h4 {
+  font-size: 12px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #111;
+}
+
+.footer-column a {
+  display: block;
+  font-size: 12px;
+  color: #5d6778;
+  text-decoration: none;
+  margin-bottom: 8px;
+  word-break: break-word;
+}
+
+.footer-column a:hover {
+  color: #111;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(0,0,0,0.1);
+  padding-top: 16px;
+  font-size: 11px;
+  text-align: center;
+  color: #5d6778;
 }

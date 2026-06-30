@@ -1,62 +1,83 @@
+/* CONFIGURAÇÕES GERAIS E RESETS */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap');
+
 .institucional-container {
   display: flex;
   min-height: 100vh;
-  background: #fafafa;
-  font-family: Arial, sans-serif;
-  color: #222;
+  background: #f6f8fc; /* Fundo padrão suave da Home */
+  font-family: 'Plus Jakarta Sans', sans-serif; /* Fonte padrão do site */
+  color: #1a1e24; /* Cor de texto principal da Home */
 }
 
 /* =========================
-   TOPO (LOGO)
+   TOPO (LOGO) COM GRADIENTE ANIMADO DA HOME
 ========================= */
 .topo-institucional {
-  padding: 20px 40px;
-  background: #fff;
-  border-bottom: 1px solid #eee;
+  padding: 30px 40px; /* Um pouco mais de respiro para valorizar a logo */
+  background: linear-gradient(-45deg, #cbd5e1, #94a3b8, #bccbe0, #a2b4cd);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite; /* Ativa a animação declarada no fim do arquivo */
+  border-bottom: 1px solid rgba(0,0,0,0.1);
 }
 
 .logo {
-  height: 70px;
+  height: 70px; /* Mantido no tamanho maior que você escolheu */
   cursor: pointer;
-  transition: 0.2s ease;
+  transition: opacity 0.2s ease;
 }
 
 .logo:hover {
-  transform: scale(1.05);
+  opacity: 0.75; /* Efeito de hover idêntico ao da Home */
 }
 
 /* =========================
    MENU LATERAL
 ========================= */
 .menu-lateral {
-  width: 240px;
+  width: 260px;
   position: sticky;
   top: 0;
   height: 100vh;
-  padding: 30px 20px;
-  background: #ffffff;
-  border-right: 1px solid #eee;
+  padding: 40px 30px;
+  background: #e8eff9; /* Tom de azul sutil herdado do footer da Home */
+  border-right: 1px solid #cbd7e8; /* Divisor idêntico ao do footer */
   display: flex;
   flex-direction: column;
 }
 
 .menu-lateral h3 {
-  font-size: 18px;
-  margin-bottom: 20px;
-  font-weight: bold;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 22px;
+  margin-bottom: 25px;
+  font-weight: 400;
+  color: #121c2d; /* Azul escuro principal */
+  letter-spacing: 0.5px;
 }
 
 .menu-lateral a {
   text-decoration: none;
-  color: #444;
-  font-size: 15px;
-  padding: 8px 0;
-  transition: 0.2s ease;
+  color: #55637a; /* Cor secundária dos links do footer */
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 0;
+  letter-spacing: 0.5px;
+  border-left: 2px solid transparent; /* Evita que o menu "trema" quando o link ativa */
+  padding-left: 0;
+  transition: all 0.2s ease;
 }
 
 .menu-lateral a:hover {
-  color: #000;
-  padding-left: 6px;
+  color: #121c2d; /* Destaca com o azul escuro ao passar o mouse */
+  padding-left: 4px; /* Efeito sutil de deslocamento */
+}
+
+/* DESTAQUE DO LINK ATIVO (Integração com Angular) */
+.menu-lateral a.active, 
+.menu-lateral a:active {
+  color: #121c2d;
+  font-weight: 600;
+  border-left: 2px solid #121c2d; /* Barrinha lateral estilosa */
+  padding-left: 8px;
 }
 
 /* =========================
@@ -64,45 +85,56 @@
 ========================= */
 .conteudo {
   flex: 1;
-  padding: 40px 60px;
-  max-width: 900px;
+  padding: 60px 80px;
+  max-width: 850px;
 }
 
 /* =========================
-   TIPOGRAFIA
+   TIPOGRAFIA (ESTILO EDITORIAL)
 ========================= */
-h1 {
-  font-size: 32px;
-  margin-bottom: 20px;
-  font-weight: 700;
-}
-
 h2 {
-  font-size: 22px;
-  margin-bottom: 10px;
-  margin-top: 40px;
-  font-weight: 600;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 32px;
+  font-weight: 400;
+  font-style: italic; /* Charme editorial herdado dos títulos principais */
+  color: #111111;
+  margin-bottom: 20px;
+  margin-top: 0; /* Reset para o topo da seção */
 }
 
 p {
-  font-size: 16px;
-  line-height: 1.7;
-  color: #444;
-  margin-bottom: 15px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 15px; /* Tamanho ajustado para melhor leitura */
+  line-height: 1.8; /* Mais espaçamento entre linhas para blocos longos */
+  color: #475569; /* Tom cinza-azulado elegante do footer */
+  margin-bottom: 24px;
+  text-align: justify; /* Alinhamento elegante em bloco */
+  letter-spacing: -0.1px;
 }
 
 /* =========================
    SEÇÕES
 ========================= */
 section {
-  margin-bottom: 50px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #eee;
+  margin-bottom: 60px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #cbd7e8; /* Divisor sutil acompanhando o design */
+}
+
+section:last-of-type {
+  border-bottom: none; /* Remove a barra sob a última seção */
 }
 
 /* =========================
-   UX GLOBAL
+   UX GLOBAL & ANIMAÇÕES
 ========================= */
 html {
   scroll-behavior: smooth;
+}
+
+/* Declaração dos Keyframes para o gradiente animado funcionar */
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
