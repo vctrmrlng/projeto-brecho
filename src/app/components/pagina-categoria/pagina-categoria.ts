@@ -4,11 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule, ActivatedRoute } from '@angular/router';
 import { ProdutoService } from '../../../services/produto.service';
 import { Produto } from '../../models/produto.model';
+import { Footer } from "../../shared/footer/footer";
 
 @Component({
   selector: 'app-pagina-categoria',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule],
+  imports: [CommonModule, FormsModule, RouterModule, Footer],
   templateUrl: './pagina-categoria.html',
   styleUrls: ['./pagina-categoria.css']
 })

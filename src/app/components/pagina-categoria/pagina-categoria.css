@@ -87,8 +87,7 @@ html, body {
 .availability-badge {
   position: absolute;
   top: 40px;
-  left: 50%;
-  transform: translateX(450px);
+  right: 50px; /* Alinha o elemento a 50px de distância da margem direita */
   font-size: 10px;
   letter-spacing: 2px;
   border: 1px solid rgba(0,0,0,0.2);

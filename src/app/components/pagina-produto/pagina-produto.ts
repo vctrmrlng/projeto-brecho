@@ -4,6 +4,7 @@ import { Produto } from '../../models/produto.model';
 import { ProdutoService } from '../../../services/produto.service';
 import { ActivatedRoute, RouterModule } from '@angular/router'; 7
 import { Location } from '@angular/common';
+import { Footer } from '../../shared/footer/footer';
 
 interface Midia {
   id: number;
@@ -15,7 +16,7 @@ interface Midia {
 @Component({
   selector: 'app-pagina-produto',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, Footer],
   templateUrl: './pagina-produto.html',
   styleUrls: ['./pagina-produto.css']
 })

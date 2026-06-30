@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Produto } from '../../models/produto.model';
 import { ProdutoService } from '../../../services/produto.service';
+import { Footer } from '../../shared/footer/footer';
 
 @Component({
   selector: 'app-pagina-home',
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, Footer],
   templateUrl: './pagina-home.html',
   styleUrl: './pagina-home.css',
 })

@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { PaginaCategoria } from './pagina-categoria';
+import { Footer } from '../../shared/footer/footer';
 
 describe('PaginaCategoria', () => {
   let component: PaginaCategoria;
