@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule, ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { Header } from '../../shared/header/header';
 
 @Component({
   selector: 'app-institucional',
   standalone: true,
-  imports: [RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule, Header],
   templateUrl: './institucional.html',
   styleUrl: './institucional.css',
 })

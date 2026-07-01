@@ -12,11 +12,11 @@
 
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
 
     padding: 20px 50px 15px 50px;
 
-    background: linear-gradient(-45deg, #cbd5e1, #94a3b8, #bccbe0, #a2b4cd);
+    background: linear-gradient(-45deg, #cbd5e1, #93a4c2, #b6c4dc, #8fa3bf);
     background-size: 400% 400%;
     animation: gradientShift 15s ease infinite;
 }
@@ -28,27 +28,25 @@
     100% { background-position: 0% 50%; }
 }
 
-/* CONTAINER GLOBAL (ALINHAMENTO PADRÃO) */
+/* CONTAINER GLOBAL */
 .header-top,
 .header-center,
 .header-bottom {
     max-width: 1300px;
     margin: 0 auto;
     width: 100%;
-
-    display: flex;
-    align-items: center;
 }
 
 /* TOPO */
 .header-top {
+    display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 8px;
 }
 
 .logo img {
-    height: 70px;
+    height: 85px;
     width: auto;
     display: block;
 }
@@ -63,12 +61,17 @@
     backdrop-filter: blur(4px);
 }
 
-/* CENTRO */
+/* CENTRO (FIX PRINCIPAL) */
 .header-center {
+    display: flex;
     justify-content: center;
+    align-items: center;
     margin-bottom: 10px;
+
+    min-height: 90px; /* 🔒 impede empurrão do layout */
 }
 
+/* TÍTULO */
 .page-title {
     font-family: 'Playfair Display', Georgia, serif;
     font-size: 52px;
@@ -79,11 +82,15 @@
     text-align: center;
     margin: 0;
     letter-spacing: -0.5px;
+    white-space: pre-line;
 }
 
 /* BASE */
 .header-bottom {
+    display: flex;
     justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
 }
 
 .nav-links,
@@ -118,8 +125,14 @@
 
 .ticker {
     display: flex;
+    width: max-content;
+    animation: tickerLoop 40s linear infinite;
+}
+
+.ticker-group {
+    display: flex;
     white-space: nowrap;
-    animation: tickerLoop 25s linear infinite;
+    padding-right: 40px;
 }
 
 .ticker span {
@@ -141,13 +154,24 @@
     color: #111;
 }
 
-.auth-links .logout-link {
+.logout-button {
+    background: rgba(176, 0, 32, 0.1);
+    border: 1px solid rgba(176, 0, 32, 0.35);
     color: #b00020;
-    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 1px;
+    padding: 6px 12px;
     cursor: pointer;
-    margin-left: 10px;
+    transition: all 0.2s ease;
+    font-family: inherit;
+    border-radius: 4px;
 }
 
-.logout-link:hover {
-    opacity: 0.7;
+.logout-button:hover {
+    background: rgba(176, 0, 32, 0.15);
+    border-color: rgba(176, 0, 32, 0.6);
+}
+
+.logout-button:active {
+    transform: scale(0.98);
 }

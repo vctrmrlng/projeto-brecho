@@ -3,11 +3,12 @@ import { FormsModule } from '@angular/forms';
 import { ProdutoCadastroService } from '../../../services/produto-cadastro.service';
 import { ProdutoCadastro } from '../../models/produto-cadastro.model';
 import { RouterModule } from '@angular/router';
+import { Header } from '../../shared/header/header';
 
 @Component({
   selector: 'app-cadastro-produto',
   standalone: true,
-  imports: [FormsModule, RouterModule],
+  imports: [FormsModule, RouterModule, Header],
   templateUrl: './cadastro-produto.html',
   styleUrl: './cadastro-produto.css'
 })

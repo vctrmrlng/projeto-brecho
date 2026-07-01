@@ -1,42 +1,4 @@
-<header class="hero-section">
-
-  <nav class="navbar">
-    <a routerLink="/" class="logo">
-      <img src="/imagens/logo.svg" alt="Segunda Chance" class="logo" />
-    </a>
-  </nav>
-
-  <div class="hero-content">
-    <div class="breadcrumbs hero-subtitle">
-      <a routerLink="/">Início</a> /
-      <span class="current-category">{{ genero }}</span>
-    </div>
-
-    <h1 class="hero-title">
-      {{ genero }}
-    </h1>
-  </div>
-
-  <div class="availability-badge">
-    PEÇAS EXCLUSIVAS
-  </div>
-
-</header>
-
-<div class="ticker-wrapper">
-  <div class="ticker">
-    <span>
-      PEÇAS ÚNICAS ✦ MODA SUSTENTÁVEL ✦ SEGUNDA CHANCE ✦ FRETE GRÁTIS ACIMA DE R$ 250 ✦ RENOVE SEU LOOK COM PEÇAS SEMI NOVAS ✦ &nbsp;
-    </span>
-    <span>
-      PEÇAS ÚNICAS ✦ MODA SUSTENTÁVEL ✦ SEGUNDA CHANCE ✦ FRETE GRÁTIS ACIMA DE R$ 250 ✦ RENOVE SEU LOOK COM PEÇAS SEMI NOVAS ✦ &nbsp;
-    </span>
-    <span>
-      PEÇAS ÚNICAS ✦ MODA SUSTENTÁVEL ✦ SEGUNDA CHANCE ✦ FRETE GRÁTIS ACIMA DE R$ 250 ✦ RENOVE SEU LOOK COM PEÇAS SEMI NOVAS ✦ &nbsp;
-    </span>
-  </div>
-</div>
-
+<app-header></app-header>
 <!-- LOADING -->
 <div *ngIf="loading" class="loading-state">
   Carregando produtos...

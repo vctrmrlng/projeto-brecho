@@ -28,19 +28,19 @@
         </nav>
 
         <div class="auth-links">
-
             <ng-container *ngIf="!isLoggedIn; else logged">
-                <a routerLink="/cadastro">Cadastro</a>
+
+                <a routerLink="/cadastro-usuario">Cadastro</a>
                 <a routerLink="/login">Login</a>
+
             </ng-container>
 
             <ng-template #logged>
                 <span class="user-greeting">
                     Que bom você aqui, {{ userName }}
-                    <a class="logout-link" (click)="logout()">Sair</a>
+                    <button class="logout-button" (click)="logout()">Sair</button>
                 </span>
             </ng-template>
-
         </div>
 
     </div>
@@ -50,13 +50,25 @@
 <div class="ticker-wrapper">
     <div class="ticker">
         <span>
-            PEÇAS ÚNICAS ✦ MODA SUSTENTÁVEL ✦ SEGUNDA CHANCE ✦ FRETE GRÁTIS ACIMA DE R$ 250 ✦
+            PEÇAS ÚNICAS ✦ MODA SUSTENTÁVEL ✦ SEGUNDA CHANCE ✦ FRETE GRÁTIS ACIMA DE R$ 250 ✦ DÊ UMA SEGUNDA CHANCE AO
+            SEU GUARDA ROUPA ✦ VENDA AQUELAS PEÇAS QUE VOCÊ JÁ NÂO USA HÁ ALGUM TEMPO ✦ RENOVE SEU LOOK COM PEÇAS SEMI
+            NOVAS ✦
             &nbsp;
         </span>
 
         <span>
-            PEÇAS ÚNICAS ✦ MODA SUSTENTÁVEL ✦ SEGUNDA CHANCE ✦ FRETE GRÁTIS ACIMA DE R$ 250 ✦
+            PEÇAS ÚNICAS ✦ MODA SUSTENTÁVEL ✦ SEGUNDA CHANCE ✦ FRETE GRÁTIS ACIMA DE R$ 250 ✦ DÊ UMA SEGUNDA CHANCE AO
+            SEU GUARDA ROUPA ✦ VENDA AQUELAS PEÇAS QUE VOCÊ JÁ NÂO USA HÁ ALGUM TEMPO ✦ RENOVE SEU LOOK COM PEÇAS SEMI
+            NOVAS ✦
             &nbsp;
         </span>
+
+        <span>
+            PEÇAS ÚNICAS ✦ MODA SUSTENTÁVEL ✦ SEGUNDA CHANCE ✦ FRETE GRÁTIS ACIMA DE R$ 250 ✦ DÊ UMA SEGUNDA CHANCE AO
+            SEU GUARDA ROUPA ✦ VENDA AQUELAS PEÇAS QUE VOCÊ JÁ NÂO USA HÁ ALGUM TEMPO ✦ RENOVE SEU LOOK COM PEÇAS SEMI
+            NOVAS ✦
+            &nbsp;
+        </span>
+
     </div>
 </div>

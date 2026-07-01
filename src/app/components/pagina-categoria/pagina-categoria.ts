@@ -5,11 +5,12 @@ import { RouterModule, ActivatedRoute } from '@angular/router';
 import { ProdutoService } from '../../../services/produto.service';
 import { Produto } from '../../models/produto.model';
 import { Footer } from "../../shared/footer/footer";
+import { Header } from '../../shared/header/header';
 
 @Component({
   selector: 'app-pagina-categoria',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule, Footer],
+  imports: [CommonModule, FormsModule, RouterModule, Footer, Header],
   templateUrl: './pagina-categoria.html',
   styleUrls: ['./pagina-categoria.css']
 })

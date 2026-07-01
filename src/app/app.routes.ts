@@ -4,39 +4,43 @@ import { PaginaProduto } from './components/pagina-produto/pagina-produto';
 import { CadastroUsuario } from './components/cadastro-usuario/cadastro-usuario';
 import { PaginaCategoria } from './components/pagina-categoria/pagina-categoria';
 import { Login } from './auth/login-usuario/login-usuario';
-import { Institucional } from './institucional/institucional';
+import { Institucional } from './components/institucional/institucional';
 
 export const routes: Routes = [
   {
     path: '',
-    component: PaginaHome
+    component: PaginaHome,
+    data: {title: 'Encontre peças únicas\n com história.'}
   },
   {
     path: 'produto/:id',
-    component: PaginaProduto
+    component: PaginaProduto,
+    data: { title: 'Encontre peças únicas\n com história.' }
   },
   {
-  path: 'cadastro-usuario',
-  component: CadastroUsuario
+    path: 'cadastro-usuario',
+    component: CadastroUsuario,
+    data: { title: 'Cadastre-se' }
   },
   {
-  path: 'categoria/:genero',
-  component: PaginaCategoria
+    path: 'categoria/:genero',
+    component: PaginaCategoria,
+    data: { title: 'Categoria' }
   },
   {
     path: 'cadastro-produto',
     loadComponent: () =>
       import('./components/cadastro-produto/cadastro-produto')
-        .then(m => m.CadastroProduto)
+        .then(m => m.CadastroProduto),
+    data: { title: 'Cadastrar Produto' }
   },
   {
-  path: 'login',
-  component: Login
+    path: 'login',
+    component: Login
   },
   {
-  path: 'institucional',
-  component: Institucional
+    path: 'institucional',
+    component: Institucional,
+    data: { title: 'Institucional' }
   }
-
-
 ];
