@@ -4,10 +4,11 @@ import { RouterModule } from '@angular/router';
 import { Produto } from '../../models/produto.model';
 import { ProdutoService } from '../../../services/produto.service';
 import { Footer } from '../../shared/footer/footer';
+import { Header } from '../../shared/header/header';
 
 @Component({
   selector: 'app-pagina-home',
-  imports: [CommonModule, RouterModule, Footer],
+  imports: [CommonModule, RouterModule, Footer, Header],
   templateUrl: './pagina-home.html',
   styleUrl: './pagina-home.css',
 })

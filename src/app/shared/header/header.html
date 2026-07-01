@@ -1,0 +1,62 @@
+<header class="hero-header">
+
+    <!-- TOPO -->
+    <div class="header-top">
+
+        <a routerLink="/" class="logo">
+            <img src="/imagens/logo.svg" alt="Segunda Chance">
+        </a>
+
+        <div class="availability-badge">
+            NOVOS PRODUTOS TODA SEMANA
+        </div>
+
+    </div>
+
+    <!-- CENTRO -->
+    <div class="header-center">
+        <h1 class="page-title">{{ pageTitle }}</h1>
+    </div>
+
+    <!-- BASE -->
+    <div class="header-bottom">
+
+        <nav class="nav-links">
+            <a routerLink="/categoria/feminino">Feminino</a>
+            <a routerLink="/categoria/masculino">Masculino</a>
+            <a routerLink="/categoria/infantil">Infantil</a>
+        </nav>
+
+        <div class="auth-links">
+
+            <ng-container *ngIf="!isLoggedIn; else logged">
+                <a routerLink="/cadastro">Cadastro</a>
+                <a routerLink="/login">Login</a>
+            </ng-container>
+
+            <ng-template #logged>
+                <span class="user-greeting">
+                    Que bom você aqui, {{ userName }}
+                    <a class="logout-link" (click)="logout()">Sair</a>
+                </span>
+            </ng-template>
+
+        </div>
+
+    </div>
+
+</header>
+
+<div class="ticker-wrapper">
+    <div class="ticker">
+        <span>
+            PEÇAS ÚNICAS ✦ MODA SUSTENTÁVEL ✦ SEGUNDA CHANCE ✦ FRETE GRÁTIS ACIMA DE R$ 250 ✦
+            &nbsp;
+        </span>
+
+        <span>
+            PEÇAS ÚNICAS ✦ MODA SUSTENTÁVEL ✦ SEGUNDA CHANCE ✦ FRETE GRÁTIS ACIMA DE R$ 250 ✦
+            &nbsp;
+        </span>
+    </div>
+</div>
