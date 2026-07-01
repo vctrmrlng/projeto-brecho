@@ -155,23 +155,37 @@
 }
 
 .logout-button {
-    background: rgba(176, 0, 32, 0.1);
-    border: 1px solid rgba(176, 0, 32, 0.35);
-    color: #b00020;
-    font-size: 13px;
-    letter-spacing: 1px;
-    padding: 6px 12px;
+    background: rgba(255, 255, 255, 0.65);
+    color: #8d2436;
+    border: 1px solid #8d2436;
+    margin-left: 12px;
+    border-radius: 999px;
+    padding: 7px 14px;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s ease;
-    font-family: inherit;
-    border-radius: 4px;
+    transition:
+        background .30s ease,
+        color .30s ease,
+        border-color .30s ease,
+        transform .20s ease,
+        box-shadow .30s ease;
+    box-shadow: 0 6px 16px rgba(141, 36, 54, .10);
 }
 
 .logout-button:hover {
-    background: rgba(176, 0, 32, 0.15);
-    border-color: rgba(176, 0, 32, 0.6);
+    background: #8d2436;
+    color: white;
+    border-color: #8d2436;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px rgba(141, 36, 54, .20);
 }
 
 .logout-button:active {
-    transform: scale(0.98);
+    background: #6f1c2b;
+    border-color: #6f1c2b;
+    color: white;
+    transform: translateY(1px);
+    box-shadow: 0 4px 10px rgba(141, 36, 54, .15);
 }

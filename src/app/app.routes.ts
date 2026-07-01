@@ -5,12 +5,13 @@ import { CadastroUsuario } from './components/cadastro-usuario/cadastro-usuario'
 import { PaginaCategoria } from './components/pagina-categoria/pagina-categoria';
 import { Login } from './auth/login-usuario/login-usuario';
 import { Institucional } from './components/institucional/institucional';
+import { CadastroProduto } from './components/cadastro-produto/cadastro-produto';
 
 export const routes: Routes = [
   {
     path: '',
     component: PaginaHome,
-    data: {title: 'Encontre peças únicas\n com história.'}
+    data: { title: 'Encontre peças únicas\n com história.' }
   },
   {
     path: 'produto/:id',
@@ -29,9 +30,7 @@ export const routes: Routes = [
   },
   {
     path: 'cadastro-produto',
-    loadComponent: () =>
-      import('./components/cadastro-produto/cadastro-produto')
-        .then(m => m.CadastroProduto),
+    component: CadastroProduto,
     data: { title: 'Cadastrar Produto' }
   },
   {

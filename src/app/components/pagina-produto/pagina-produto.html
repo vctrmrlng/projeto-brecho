@@ -91,16 +91,14 @@
     <div class="actions-row">
 
       <button
-        class="add-to-bag"
+        class="reserve-button"
         [ngClass]="{
           'status-reservado': produto.status === 0
         }"
         (click)="alterarStatus()"
       >
         {{ getTextoBotao() }}
-      </button>
-
-      <button class="wishlist-btn">♡</button>
+      </button>      
 
     </div>
 

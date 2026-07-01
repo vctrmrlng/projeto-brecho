@@ -218,7 +218,7 @@ header a {
     margin-top: 24px;
 }
 
-.add-to-bag {
+.reserve-button {
     flex: 1;
     color: white;
     border: none;
@@ -232,28 +232,17 @@ header a {
     background: var(--accent-blue);
 }
 
-.add-to-bag.status-reservado {
+.reserve-button.status-reservado {
     background: #d9d9d9 !important;
     color: #444 !important;
 }
 
-.add-to-bag.status-vendido {
-    background: #f3b3b3 !important;
-    color: #6b1d1d !important;
-}
 
-.add-to-bag:hover {
+.reserve-button:hover {
     opacity: 0.9;
     transform: translateY(-1px);
 }
 
-.wishlist-btn {
-    width: 52px;
-    border: 1px solid var(--border-color);
-    background: transparent;
-    cursor: pointer;
-    font-size: 18px;
-}
 
 /* ========================================================================== 
    RELACIONADOS
